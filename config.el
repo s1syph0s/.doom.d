@@ -78,6 +78,38 @@
 
 ;; Which Key
 (after! which-key
-  (setq which-key-idle-delay 0.2)
-  (setq which-key-prefix-prefix "+")
-  )
+  (setq! which-key-idle-delay 0.2)
+  (setq! which-key-prefix-prefix "+"))
+
+;; Nix
+(after! nix-mode
+  (set-formatter! 'alejandra '("alejandra" "--quiet") :modes '(nix-mode)))
+(setq-hook! 'nix-mode-hook +format-with-lsp nil)
+
+;; Org
+(after! org
+  (setq! org-log-done t)
+  (setq! org-hide-emphasis-markers t)
+  (setq! org-capture-templates '(("t" "Personal todo" entry
+                                  (file +org-capture-todo-file)
+                                  "* TODO %?\n%i\n%a" :prepend t)
+                                 ("n" "Personal notes" entry
+                                  (file +org-capture-notes-file)
+                                  "* %u %?\n%i\n%a" :prepend t)
+                                 ("j" "Journal" entry
+                                  (file+olp+datetree +org-capture-journal-file)
+                                  "* %U %?\n%i\n%a" :prepend t)
+                                 ("p" "Templates for projects")
+                                 ("pt" "Project-local todo" entry
+                                  (file+headline +org-capture-project-todo-file "Inbox")
+                                  "* TODO %?\n%i\n%a" :prepend t)
+                                 ("pn" "Project-local notes" entry
+                                  (file+headline +org-capture-project-notes-file "Inbox")
+                                  "* %U %?\n%i\n%a" :prepend t)
+                                 ("pc" "Project-local changelog" entry
+                                  (file+headline +org-capture-project-changelog-file "Unreleased")
+                                  "* %U %?\n%i\n%a" :prepend t)
+                                 ("o" "Centralized templates for projects")
+                                 ("ot" "Project todo" entry #'+org-capture-central-project-todo-file "* TODO %?\n %i\n %a" :heading "Tasks" :prepend nil)
+                                 ("on" "Project notes" entry #'+org-capture-central-project-notes-file "* %U %?\n %i\n %a" :heading "Notes" :prepend t)
+                                 ("oc" "Project changelog" entry #'+org-capture-central-project-changelog-file "* %U %?\n %i\n %a" :heading "Changelog" :prepend t))))
