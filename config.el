@@ -6,7 +6,7 @@
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
-(setq user-full-name "Pasha Alghifari Fistanto"
+(setq user-full-name "Pasha Fistanto"
       user-mail-address "pasha@fstn.top")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
@@ -74,7 +74,9 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
-(setq shell-file-name "fish")
+
+;; Shell
+(setq! shell-file-name "fish")
 
 ;; Which Key
 (after! which-key
