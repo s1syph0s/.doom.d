@@ -34,6 +34,7 @@
 ;; `load-theme' function. This is the default:
 (setq doom-theme 'doom-one)
 
+(doom/set-frame-opacity 90)
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type 'relative)
@@ -75,6 +76,9 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
+(setenv "GPG_AGENT_INFO" nil)
+(setq auto-save-default nil)
+
 ;; Shell
 (setq! shell-file-name "fish")
 
@@ -90,6 +94,10 @@
 
 ;; Org
 (after! org
+  ;; Org crypt
+  (setq! org-crypt-key user-mail-address)
+
+  ;; Org Agenda
   (setq! org-log-done t)
   (setq! org-hide-emphasis-markers t)
   (setq! org-capture-templates '(("t" "Personal todo" entry
