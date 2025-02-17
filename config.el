@@ -32,7 +32,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
+(setq doom-theme 'doom-palenight)
 
 (doom/set-frame-opacity 90)
 ;; This determines the style of line numbers in effect. If set to `nil', line
@@ -80,7 +80,7 @@
 (setq auto-save-default nil)
 
 ;; Shell
-(setq! shell-file-name "fish")
+(setq! shell-file-name "zsh")
 
 ;; Which Key
 (after! which-key
@@ -123,3 +123,6 @@
                                  ("ot" "Project todo" entry #'+org-capture-central-project-todo-file "* TODO %?\n %i\n %a" :heading "Tasks" :prepend nil)
                                  ("on" "Project notes" entry #'+org-capture-central-project-notes-file "* %U %?\n %i\n %a" :heading "Notes" :prepend t)
                                  ("oc" "Project changelog" entry #'+org-capture-central-project-changelog-file "* %U %?\n %i\n %a" :heading "Changelog" :prepend t))))
+
+;; LSP stuff
+(setq lsp-inlay-hint-enable t)
