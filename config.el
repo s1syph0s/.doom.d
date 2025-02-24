@@ -126,3 +126,5 @@
 
 ;; LSP stuff
 (setq lsp-inlay-hint-enable t)
+(after! rust
+  setq lsp-rust-features [ "all" ])
