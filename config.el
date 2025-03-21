@@ -88,7 +88,7 @@
   (setq! which-key-prefix-prefix "+"))
 
 ;; Nix
-(after! nix-mode
+(after! nix
   (set-formatter! 'alejandra '("alejandra" "--quiet") :modes '(nix-mode)))
 (setq-hook! 'nix-mode-hook +format-with-lsp nil)
 
@@ -133,6 +133,7 @@
 (after! rust
   (setq lsp-rust-features [ "all" ]))
 
+(use-package! lsp-mode)
 (after! lsp-mode
   (add-to-list 'lsp-language-id-configuration '(typst-ts-mode . "typst"))
   (lsp-register-client (make-lsp-client
@@ -140,4 +141,4 @@
                         :activation-fn  (lsp-activate-on "typst")
                         :server-id 'tinymist))
 
-  (add-hook 'typst-ts-mode-hook #'lsp! 'append))
+  (add-hook 'typst-ts-mode-local-vars-hook #'lsp! 'append))
