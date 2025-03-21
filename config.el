@@ -122,9 +122,22 @@
                                  ("o" "Centralized templates for projects")
                                  ("ot" "Project todo" entry #'+org-capture-central-project-todo-file "* TODO %?\n %i\n %a" :heading "Tasks" :prepend nil)
                                  ("on" "Project notes" entry #'+org-capture-central-project-notes-file "* %U %?\n %i\n %a" :heading "Notes" :prepend t)
-                                 ("oc" "Project changelog" entry #'+org-capture-central-project-changelog-file "* %U %?\n %i\n %a" :heading "Changelog" :prepend t))))
+                                 ("oc" "Project changelog" entry #'+org-capture-central-project-changelog-file "* %U %?\n %i\n %a" :heading "Changelog" :prepend t)))
+  (setq! org-superstar-headline-bullets-list '(;; Original ones nicked from org-bullets
+                                               ?◉
+                                               ?○
+                                               )))
 
 ;; LSP stuff
 (setq lsp-inlay-hint-enable t)
 (after! rust
-  setq lsp-rust-features [ "all" ])
+  (setq lsp-rust-features [ "all" ]))
+
+(after! lsp-mode
+  (add-to-list 'lsp-language-id-configuration '(typst-ts-mode . "typst"))
+  (lsp-register-client (make-lsp-client
+                        :new-connection (lsp-stdio-connection "tinymist")
+                        :activation-fn  (lsp-activate-on "typst")
+                        :server-id 'tinymist))
+
+  (add-hook 'typst-ts-mode-hook #'lsp! 'append))
