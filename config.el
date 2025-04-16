@@ -21,7 +21,8 @@
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
 ;;
-(setq doom-font (font-spec :family "SauceCodePro NF" :size 16))
+(setq doom-font (font-spec :family "SauceCodePro NFM" :size 16))
+
 ;;      doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
@@ -32,7 +33,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-palenight)
+(setq doom-theme 'modus-vivendi)
 
 (doom/set-frame-opacity 90)
 ;; This determines the style of line numbers in effect. If set to `nil', line
@@ -87,13 +88,13 @@
   (setq! which-key-idle-delay 0.2)
   (setq! which-key-prefix-prefix "+"))
 
-;; Nix
-(after! nix
-  (set-formatter! 'alejandra '("alejandra" "--quiet") :modes '(nix-mode)))
-(setq-hook! 'nix-mode-hook +format-with-lsp nil)
-
 ;; Org
 (after! org
+  (setq! org-superstar-headline-bullets-list '(;; Original ones nicked from org-bullets
+                                               ?◉
+                                               ?○
+                                               ))
+
   ;; Org crypt
   (setq! org-crypt-key user-mail-address)
 
@@ -123,15 +124,29 @@
                                  ("ot" "Project todo" entry #'+org-capture-central-project-todo-file "* TODO %?\n %i\n %a" :heading "Tasks" :prepend nil)
                                  ("on" "Project notes" entry #'+org-capture-central-project-notes-file "* %U %?\n %i\n %a" :heading "Notes" :prepend t)
                                  ("oc" "Project changelog" entry #'+org-capture-central-project-changelog-file "* %U %?\n %i\n %a" :heading "Changelog" :prepend t)))
-  (setq! org-superstar-headline-bullets-list '(;; Original ones nicked from org-bullets
-                                               ?◉
-                                               ?○
-                                               )))
+
+  ;; Org Roam
+  (setq! org-roam-capture-templates
+         '(("d" "default" plain
+            "%?"
+            :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n") :unnarrowed t)
+           ("b" "book notes" plain
+            "* Source\n\nAuthor: %^{Author}\nTitle: ${title}\nYear: %^{Year}\n\n* Summary\n\n%?"
+            :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n")
+            :unnarrowed t))
+         ))
 
 ;; LSP stuff
 (setq lsp-inlay-hint-enable t)
+
+;; Rust
 (after! rust
   (setq lsp-rust-features [ "all" ]))
+
+;; Nix
+(after! nix
+  (set-formatter! 'alejandra '("alejandra" "--quiet") :modes '(nix-mode)))
+(setq-hook! 'nix-mode-hook +format-with-lsp nil)
 
 (use-package! lsp-mode)
 (after! lsp-mode
@@ -142,3 +157,6 @@
                         :server-id 'tinymist))
 
   (add-hook 'typst-ts-mode-local-vars-hook #'lsp! 'append))
+
+;; Keymaps
+(define-key input-decode-map "\C-i" [C-i])
