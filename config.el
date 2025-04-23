@@ -158,5 +158,18 @@
 
   (add-hook 'typst-ts-mode-local-vars-hook #'lsp! 'append))
 
+;; Hledger
+(setq! ledger-binary-path "hledger.sh"
+       ledger-default-date-format "%Y-%m-%d"
+       ledger-mode-should-check-version nil
+       ledger-report-auto-width nil
+       ledger-report-links-in-register nil
+       ledger-report-native-highlighting-arguments '("--color=always")
+       ledger-reports '(("bal" "%(binary) -f %(ledger-file) bal -t")
+                        ("reg" "%(binary) -f %(ledger-file) reg")
+                        ("payee" "%(binary) -f %(ledger-file) reg payee:%(payee)")
+                        ("account" "%(binary) -f %(ledger-file) reg %(account)")))
+(add-to-list 'auto-mode-alist '("\\.journal\\'" . ledger-mode))
+
 ;; Keymaps
 (define-key input-decode-map "\C-i" [C-i])
