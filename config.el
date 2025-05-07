@@ -21,7 +21,10 @@
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
 ;;
-(setq doom-font (font-spec :family "SauceCodePro NFM" :size 16))
+(setq doom-font (font-spec :family "SauceCodePro NFM" :size 16)
+      doom-symbol-font (font-spec :family "DejaVu Sans Mono")
+      doom-emoji-fallback-font-families nil
+      doom-symbol-fallback-font-families nil)
 
 ;;      doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
 ;;
