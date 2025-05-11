@@ -9,6 +9,10 @@
 (setq user-full-name "Pasha Fistanto"
       user-mail-address "pasha@fstn.top")
 
+(setq +notmuch-sync-backend 'mbsync)
+(after! notmuch
+  (set-popup-rule! "^\*notmuch-hello" :ignore t))
+
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
 ;; - `doom-font' -- the primary font to use
