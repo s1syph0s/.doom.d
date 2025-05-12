@@ -42,7 +42,6 @@
 ;; `load-theme' function. This is the default:
 (setq doom-theme 'modus-vivendi)
 
-(doom/set-frame-opacity 90)
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type 'relative)
