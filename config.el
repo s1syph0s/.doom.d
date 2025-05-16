@@ -96,13 +96,20 @@
 
 ;; Org
 (after! org
-  (setq! org-superstar-headline-bullets-list '(;; Original ones nicked from org-bullets
-                                               ?◉
-                                               ?○
-                                               ))
+  ;; (setq! org-superstar-headline-bullets-list '(;; Original ones nicked from org-bullets
+  ;;                                              ?◉
+  ;;                                              ?○
+  ;;                                              ))
 
   ;; Org crypt
   (setq! org-crypt-key user-mail-address)
+
+  ;; Org Modern
+  (setq! org-modern-star 'replace)
+  (setq! org-modern-replace-stars "◉○")
+
+  ;; Org appear
+  (setq! org-appear-autolinks t)
 
   ;; Org Agenda
   (setq! org-log-done t)
