@@ -94,12 +94,11 @@
   (setq! which-key-idle-delay 0.2)
   (setq! which-key-prefix-prefix "+"))
 
+(setq! fill-column 80
+       message-fill-column 80)
 ;; Org
 (after! org
-  ;; (setq! org-superstar-headline-bullets-list '(;; Original ones nicked from org-bullets
-  ;;                                              ?◉
-  ;;                                              ?○
-  ;;                                              ))
+  (add-hook 'org-mode-hook #'auto-fill-mode)
 
   ;; Org crypt
   (setq! org-crypt-key user-mail-address)
@@ -183,6 +182,9 @@
                         ("payee" "%(binary) -f %(ledger-file) reg payee:%(payee)")
                         ("account" "%(binary) -f %(ledger-file) reg %(account)")))
 (add-to-list 'auto-mode-alist '("\\.journal\\'" . ledger-mode))
+
+;; Just mode
+(add-hook 'just-mode-hook (lambda () (dtrt-indent-mode 0)))
 
 ;; Keymaps
 (define-key input-decode-map "\C-i" [C-i])
