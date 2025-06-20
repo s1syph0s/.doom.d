@@ -148,9 +148,6 @@
             :unnarrowed t))
          ))
 
-;; LSP stuff
-(setq lsp-inlay-hint-enable t)
-
 ;; Rust
 (after! rust
   (setq lsp-rust-features [ "all" ]))
