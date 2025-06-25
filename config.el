@@ -87,7 +87,7 @@
 (setq auto-save-default nil)
 
 ;; Shell
-(setq! shell-file-name "zsh")
+(setq! shell-file-name "fish")
 
 ;; Which Key
 (after! which-key
