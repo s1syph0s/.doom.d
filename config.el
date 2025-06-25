@@ -9,6 +9,9 @@
 (setq user-full-name "Pasha Fistanto"
       user-mail-address "pasha@fstn.top")
 
+(if (string-equal (system-name) "johndoe")
+    (setq user-mail-address "fistanto@ibr.cs.tu-bs.de") nil)
+
 (setq +notmuch-sync-backend 'mbsync)
 (after! notmuch
   (set-popup-rule! "^\*notmuch-hello" :ignore t))
