@@ -9,8 +9,8 @@
 (setq user-full-name "Pasha Fistanto"
       user-mail-address "pasha@fstn.top")
 
-(if (string-equal (system-name) "johndoe")
-    (setq user-mail-address "fistanto@ibr.cs.tu-bs.de") nil)
+(when (string-equal (system-name) "johndoe")
+  (setq user-mail-address "fistanto@ibr.cs.tu-bs.de"))
 
 (setq +notmuch-sync-backend 'mbsync)
 (after! notmuch
