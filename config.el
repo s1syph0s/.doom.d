@@ -43,7 +43,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'modus-vivendi)
+(setq doom-theme 'doom-tomorrow-night)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -188,3 +188,14 @@
 
 ;; Keymaps
 (define-key input-decode-map "\C-i" [C-i])
+
+(defun my/consult-lsp-file-symbols ()
+  "Consult LSP File Symbols with Category"
+  (interactive)
+  (consult-lsp-file-symbols t))
+(map! :leader
+      (:prefix ("c" . "code")
+       "j" nil
+       "J" nil
+       :desc "Jump to symbol in current file" "j" #'my/consult-lsp-file-symbols
+       :desc "Jump to symbol in current workspace" "J" #'consult-lsp-symbols))
