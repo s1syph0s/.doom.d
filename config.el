@@ -153,7 +153,8 @@
 
 ;; Rust
 (after! rust
-  (setq lsp-rust-features [ "all" ]))
+  (setq! lsp-rust-features [ "all" ]
+         rust-indent-where-clause t))
 
 ;; Nix
 (after! nix
