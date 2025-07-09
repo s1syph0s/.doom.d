@@ -162,6 +162,7 @@
 
 (use-package! lsp-mode)
 (after! lsp-mode
+  (setq lsp-headerline-breadcrumb-enable t)
   (add-to-list 'lsp-language-id-configuration '(typst-ts-mode . "typst"))
   (lsp-register-client (make-lsp-client
                         :new-connection (lsp-stdio-connection "tinymist")
@@ -199,3 +200,5 @@
        "J" nil
        :desc "Jump to symbol in current file" "j" #'my/consult-lsp-file-symbols
        :desc "Jump to symbol in current workspace" "J" #'consult-lsp-symbols))
+
+(remove-hook 'doom-first-buffer-hook #'smartparens-global-mode)
