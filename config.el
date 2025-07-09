@@ -152,9 +152,9 @@
          ))
 
 ;; Rust
-(after! rust
-  (setq! lsp-rust-features [ "all" ]
-         rust-indent-where-clause t))
+(after! rustic
+  (setq! rustic-indent-where-clause t))
+;; To enable features, enable in .dir-locals.el: lsp-rust-features [ "all" ]
 
 ;; Nix
 (after! nix
