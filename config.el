@@ -154,8 +154,8 @@
 ;; Rust
 (after! rustic
   (setq! rustic-indent-where-clause t)
-  (defvaralias 'tree-sitter-indent-rustic-scopes 'tree-sitter-indent-rust-scopes)
-  (add-hook! 'rust-mode-hook #'tree-sitter-indent-mode))
+  (defvaralias 'tree-sitter-indent-rustic-scopes 'tree-sitter-indent-rust-scopes))
+;; (add-hook! 'rust-mode-hook #'tree-sitter-indent-mode))
 ;; To enable features, enable in .dir-locals.el: lsp-rust-features [ "all" ]
 
 ;; Nix
