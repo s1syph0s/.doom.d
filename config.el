@@ -165,7 +165,8 @@
 
 (use-package! lsp-mode)
 (after! lsp-mode
-  (setq lsp-headerline-breadcrumb-enable t)
+  (setq! lsp-headerline-breadcrumb-enable t
+         lsp-enable-snippet nil)
   (add-to-list 'lsp-language-id-configuration '(typst-ts-mode . "typst"))
   (lsp-register-client (make-lsp-client
                         :new-connection (lsp-stdio-connection "tinymist")
