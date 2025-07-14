@@ -154,14 +154,14 @@
 ;; Rust
 (after! rustic
   (setq! rustic-indent-where-clause t)
-  (defvaralias 'tree-sitter-indent-rustic-scopes 'tree-sitter-indent-rust-scopes))
-;; (add-hook! 'rust-mode-hook #'tree-sitter-indent-mode))
+  ;; Patch rustfmt config
+  (set-formatter! 'rustfmt '("rustfmt" "--edition" "2024" "--quiet" "--emit" "stdout")))
+
 ;; To enable features, enable in .dir-locals.el: lsp-rust-features [ "all" ]
 
 ;; Nix
-(after! nix
+(after! nix-mode
   (set-formatter! 'alejandra '("alejandra" "--quiet") :modes '(nix-mode)))
-(setq-hook! 'nix-mode-hook +format-with-lsp nil)
 
 (use-package! lsp-mode)
 (after! lsp-mode
