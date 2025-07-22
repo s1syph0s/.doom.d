@@ -149,7 +149,11 @@
             "* Source\n\nAuthor: %^{Author}\nTitle: ${title}\nYear: %^{Year}\n\n* Summary\n\n%?"
             :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n")
             :unnarrowed t))
-         ))
+         )
+  (setq! citar-bibliography '("~/org/roam/references.bib")))
+
+(after! org-download
+  (setq! org-download-screenshot-method "grim -g $(slurp -d) %s"))
 
 ;; Rust
 (after! rustic
