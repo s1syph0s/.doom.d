@@ -53,3 +53,4 @@
   :recipe (:host codeberg :repo "meow_king/typst-ts-mode"))
 
 (package! just-mode)
+(package! eldoc-box)

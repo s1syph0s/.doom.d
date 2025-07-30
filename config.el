@@ -167,17 +167,31 @@
 (after! nix-mode
   (set-formatter! 'alejandra '("alejandra" "--quiet") :modes '(nix-mode)))
 
+(defun my/consult-lsp-file-symbols ()
+  "Consult LSP File Symbols with Category"
+  (interactive)
+  (consult-lsp-file-symbols t))
+
+(setq! projectile-project-search-path "~/src")
+
 (use-package! lsp-mode)
 (after! lsp-mode
   (setq! lsp-headerline-breadcrumb-enable t
-         lsp-enable-snippet nil)
+         lsp-enable-snippet nil
+         lsp-signature-doc-lines 8)
   (add-to-list 'lsp-language-id-configuration '(typst-ts-mode . "typst"))
   (lsp-register-client (make-lsp-client
                         :new-connection (lsp-stdio-connection "tinymist")
                         :activation-fn  (lsp-activate-on "typst")
                         :server-id 'tinymist))
 
-  (add-hook 'typst-ts-mode-local-vars-hook #'lsp! 'append))
+  (add-hook 'typst-ts-mode-local-vars-hook #'lsp! 'append)
+  (map! :leader
+        (:prefix ("c" . "code")
+         "j" nil
+         "J" nil
+         :desc "Jump to symbol in current file" "j" #'my/consult-lsp-file-symbols
+         :desc "Jump to symbol in current workspace" "J" #'consult-lsp-symbols)))
 
 ;; Hledger
 (setq! ledger-binary-path "hledger.sh"
@@ -198,15 +212,5 @@
 ;; Keymaps
 (define-key input-decode-map "\C-i" [C-i])
 
-(defun my/consult-lsp-file-symbols ()
-  "Consult LSP File Symbols with Category"
-  (interactive)
-  (consult-lsp-file-symbols t))
-(map! :leader
-      (:prefix ("c" . "code")
-       "j" nil
-       "J" nil
-       :desc "Jump to symbol in current file" "j" #'my/consult-lsp-file-symbols
-       :desc "Jump to symbol in current workspace" "J" #'consult-lsp-symbols))
 
 (remove-hook 'doom-first-buffer-hook #'smartparens-global-mode)
