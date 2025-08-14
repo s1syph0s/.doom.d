@@ -213,4 +213,20 @@
 (define-key input-decode-map "\C-i" [C-i])
 
 
+;; Indent bars
+(setq! indent-bars-no-descend-lists t
+       indent-bars-treesit-support t
+       indent-bars-treesit-wrap '((rust arguments parameters))
+       indent-bars-treesit-scope '((rust trait_item impl_item
+                                    macro_definition macro_invocation
+                                    struct_item enum_item mod_item
+                                    const_item let_declaration
+                                    function_item for_expression
+                                    if_expression loop_expression
+                                    while_expression match_expression
+                                    match_arm call_expression
+                                    token_tree token_tree_pattern
+                                    token_repetition)))
+
+
 (remove-hook 'doom-first-buffer-hook #'smartparens-global-mode)
