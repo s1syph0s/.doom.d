@@ -69,7 +69,7 @@
        :emacs
        dired             ; making dired pretty [functional]
        electric          ; smarter, keyword-based electric-indent
-       ibuffer         ; interactive buffer management
+       (ibuffer +icons)         ; interactive buffer management
        undo              ; persistent, smarter undo for your inevitable mistakes
        vc                ; version-control and Emacs, sitting in a tree
 
@@ -190,5 +190,5 @@
        ;;literate
        (default +bindings +gnupg))
 
-(after! doom-cli-env
+(when (boundp 'doom-env-allow)
   (add-to-list 'doom-env-allow "^SSH_"))
