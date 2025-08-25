@@ -190,5 +190,5 @@
        ;;literate
        (default +bindings +gnupg))
 
-(when (boundp 'doom-env-allow)
+(after! doom-cli-env
   (add-to-list 'doom-env-allow "^SSH_"))

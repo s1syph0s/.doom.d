@@ -14,7 +14,8 @@
 
 (setq +notmuch-sync-backend 'mbsync)
 (after! notmuch
-  (set-popup-rule! "^\*notmuch-hello" :ignore t))
+  (set-popup-rule! "^\*notmuch-hello" :ignore t)
+  (setq notmuch-fcc-dirs '((".*" . "ibr-tubs/Sent"))))
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
