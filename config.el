@@ -194,6 +194,8 @@
          :desc "Jump to symbol in current file" "j" #'my/consult-lsp-file-symbols
          :desc "Jump to symbol in current workspace" "J" #'consult-lsp-symbols)))
 
+(use-package! typst-ts-mode)
+
 ;; Hledger
 (setq! ledger-binary-path "hledger.sh"
        ledger-default-date-format "%Y-%m-%d"
