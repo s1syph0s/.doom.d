@@ -194,7 +194,9 @@
          :desc "Jump to symbol in current file" "j" #'my/consult-lsp-file-symbols
          :desc "Jump to symbol in current workspace" "J" #'consult-lsp-symbols)))
 
-(use-package! typst-ts-mode)
+(use-package! typst-ts-mode
+  :config
+  (setq typst-ts-indent-offset 2))
 
 ;; Hledger
 (setq! ledger-binary-path "hledger.sh"
