@@ -54,3 +54,4 @@
 
 (package! just-mode)
 (package! eldoc-box)
+(package! org-roam-ui)
