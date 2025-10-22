@@ -12,10 +12,18 @@
 (when (string-equal (system-name) "johndoe")
   (setq user-mail-address "fistanto@ibr.cs.tu-bs.de"))
 
+;; Email
 (setq +notmuch-sync-backend 'mbsync)
 (after! notmuch
   (set-popup-rule! "^\*notmuch-hello" :ignore t)
   (setq notmuch-fcc-dirs '((".*" . "ibr-tubs/Sent"))))
+
+;; Some bug with notmuch address completion due to having notmuch-address-expand-name
+;; in the message--old-style-completion-functions variable.
+(defun pop-from-message-completion()
+  (pop message--old-style-completion-functions))
+
+(advice-add 'message-completion-function :after #'pop-from-message-completion)
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
