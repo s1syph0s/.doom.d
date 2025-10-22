@@ -292,4 +292,8 @@
 (after! cc-mode
   (setf (alist-get 'other c-default-style) "my-style"))
 
+;; Beancount Indent
+(after! beancount
+  (setq! beancount-transaction-indent 4))
+
 (remove-hook 'doom-first-buffer-hook #'smartparens-global-mode)
