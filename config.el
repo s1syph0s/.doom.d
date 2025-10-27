@@ -23,6 +23,16 @@
 (defun pop-from-message-completion()
   (pop message--old-style-completion-functions))
 
+;; (defun my-message-insert-citation-line ()
+;;   "Insert a simple citation line."
+;;   (when message-reply-headers
+;;     (insert (mail-header-from message-reply-headers) " wrote:")
+;;     (newline)
+;;     (newline)))
+
+(setq! message-citation-line-function #'message-insert-formatted-citation-line
+       message-citation-line-format "[%Y-%m-%d] %f wrote:")
+
 (advice-add 'message-completion-function :after #'pop-from-message-completion)
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
@@ -198,7 +208,8 @@
   (interactive)
   (consult-lsp-file-symbols t))
 
-(setq! projectile-project-search-path "~/src")
+(setq! projectile-auto-discover t
+       projectile-project-search-path '(("~/src" . 2)))
 
 (use-package! lsp-mode)
 (after! lsp-mode
