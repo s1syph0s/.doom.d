@@ -48,6 +48,8 @@
 ;; accept. For example:
 ;;
 (setq doom-font (font-spec :family "SauceCodePro NFM" :size 16)
+      ;; (setq doom-font (font-spec :family "Iosevka NF" :size 16)
+      doom-variable-pitch-font doom-font
       doom-symbol-font doom-font
       doom-emoji-fallback-font-families nil
       doom-symbol-fallback-font-families nil)
@@ -120,6 +122,26 @@
        message-fill-column 80)
 
 ;; Org
+(after! org-modern
+  (setq! org-modern-tag nil
+         org-modern-todo nil
+         org-modern-priority nil))
+;; (set-face-attribute 'org-modern-label nil
+;;                     :inherit 'default
+;;                     :height 1.0
+;;                     :width 'normal
+;;                     :weight 'normal)
+;; (set-face-attribute 'org-modern-todo nil
+;;                     :inherit 'default
+;;                     :height 1.0
+;;                     :width 'normal
+;;                     :weight 'normal)
+;; (set-face-attribute 'org-modern-priority nil
+;;                     :inherit 'default
+;;                     :height 1.0
+;;                     :width 'normal
+;;                     :weight 'normal))
+
 (after! org
   (add-hook 'org-mode-hook #'auto-fill-mode)
 
