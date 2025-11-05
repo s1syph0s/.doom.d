@@ -49,7 +49,7 @@
 ;;
 (setq doom-font (font-spec :family "SauceCodePro NFM" :size 16)
       ;; (setq doom-font (font-spec :family "Iosevka NF" :size 16)
-      doom-variable-pitch-font doom-font
+      doom-variable-pitch-font (font-spec :family "SauceCodePro NFP" :size 16)
       doom-symbol-font doom-font
       doom-emoji-fallback-font-families nil
       doom-symbol-fallback-font-families nil)
