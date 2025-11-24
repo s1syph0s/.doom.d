@@ -55,3 +55,4 @@
 (package! just-mode)
 (package! eldoc-box)
 (package! org-roam-ui)
+(package! google-c-style)
