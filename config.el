@@ -13,7 +13,8 @@
   (setq user-mail-address "fistanto@ibr.cs.tu-bs.de"))
 
 ;; Email
-(setq +notmuch-sync-backend 'mbsync)
+(setq! +notmuch-sync-backend 'mbsync
+       mail-user-agent 'notmuch-user-agent)
 (after! notmuch
   (set-popup-rule! "^\*notmuch-hello" :ignore t)
   (setq notmuch-fcc-dirs '((".*" . "ibr-tubs/Sent"))))
