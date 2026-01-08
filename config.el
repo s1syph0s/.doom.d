@@ -223,7 +223,7 @@
 ;; To enable features, enable in .dir-locals.el: lsp-rust-features [ "all" ]
 
 ;; Nix
-(after! nix-mode
+(after! nix-ts-mode
   (set-formatter! 'alejandra '("alejandra" "--quiet") :modes '(nix-mode)))
 
 (defun my/consult-lsp-file-symbols ()
