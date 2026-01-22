@@ -224,7 +224,16 @@
 
 ;; Nix
 (after! nix-ts-mode
-  (set-formatter! 'alejandra '("alejandra" "--quiet") :modes '(nix-mode)))
+  (set-formatter! 'alejandra '("alejandra" "--quiet") :modes '(nix-mode))
+  (let ((nix-rules (assoc 'nix nix-ts-mode-indent-rules)))
+    (when nix-rules
+      (setf (cdr nix-rules)
+            (append '(((parent-is "function_expression") parent-bol 0))
+                    (cdr nix-rules))))))
+
+;; Go
+(after! go-ts-mode
+  (setq! go-ts-mode-indent-offset 4))
 
 (defun my/consult-lsp-file-symbols ()
   "Consult LSP File Symbols with Category"
