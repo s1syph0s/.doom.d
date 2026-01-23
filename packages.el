@@ -56,3 +56,6 @@
 (package! eldoc-box)
 (package! org-roam-ui)
 (package! google-c-style)
+
+;; Local hacking
+;;(package! nix-ts-mode :recipe (:local-repo "~/src/co/nix-ts-mode"))
