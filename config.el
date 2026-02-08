@@ -164,7 +164,7 @@
 
   (setq! org-agenda-tags-todo-honor-ignore-options t
          org-agenda-todo-ignore-scheduled 'all
-         org-agenda-todo-ignore-deadlines 14)
+         org-agenda-todo-ignore-deadlines 28)
 
   (setq! org-capture-templates '(("t" "Personal todo" entry
                                   (file +org-capture-todo-file)
