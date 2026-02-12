@@ -200,6 +200,10 @@
         org-roam-ui-update-on-save t
         org-roam-ui-open-on-start t))
 
+;; C
+
+(after! c-ts-mode
+  (setq! c-ts-mode-indent-offset 4))
 
 ;; Rust
 (after! rustic
