@@ -15,7 +15,7 @@
 ;; Email
 (setq! +notmuch-sync-backend 'mbsync
        mail-user-agent 'notmuch-user-agent)
-(after! notmuch
+(with-eval-after-load notmuch
   (set-popup-rule! "^\*notmuch-hello" :ignore t)
   (setq notmuch-fcc-dirs '((".*" . "ibr-tubs/Sent"))))
 
@@ -77,9 +77,9 @@
 
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
-;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
+;; `with-eval-after-load' block, otherwise Doom's defaults may override your settings. E.g.
 ;;
-;;   (after! PACKAGE
+;;   (with-eval-after-load PACKAGE
 ;;     (setq x y))
 ;;
 ;; The exceptions to this rule:
@@ -93,7 +93,7 @@
 ;;
 ;; - `load!' for loading external *.el files relative to this one
 ;; - `use-package!' for configuring packages
-;; - `after!' for running code after a package has loaded
+;; - `with-eval-after-load' for running code after a package has loaded
 ;; - `add-load-path!' for adding directories to the `load-path', relative to
 ;;   this file. Emacs searches the `load-path' when you load packages with
 ;;   `require' or `use-package'.
@@ -115,7 +115,7 @@
 (setq! shell-file-name "fish")
 
 ;; Which Key
-(after! which-key
+(with-eval-after-load which-key
   (setq! which-key-idle-delay 0.2)
   (setq! which-key-prefix-prefix "+"))
 
@@ -123,7 +123,7 @@
        message-fill-column 80)
 
 ;; Org
-(after! org-modern
+(with-eval-after-load org-modern
   (setq! org-modern-tag nil
          org-modern-todo nil
          org-modern-priority nil))
@@ -143,7 +143,7 @@
 ;;                     :width 'normal
 ;;                     :weight 'normal))
 
-(after! org
+(with-eval-after-load org
   (add-hook 'org-mode-hook #'auto-fill-mode)
 
   ;; Org crypt
@@ -182,7 +182,7 @@
          )
   (setq! citar-bibliography '("~/org/roam/references.bib")))
 
-(after! org-download
+(with-eval-after-load org-download
   (setq! org-download-screenshot-method "grim -g $(slurp -d) %s"))
 
 (use-package! websocket
@@ -202,11 +202,11 @@
 
 ;; C
 
-(after! c-ts-mode
+(with-eval-after-load c-ts-mode
   (setq! c-ts-mode-indent-offset 4))
 
 ;; Rust
-(after! rustic
+(with-eval-after-load rustic
   (setq! rustic-indent-where-clause t)
   ;; Patch rustfmt config
   (set-formatter! 'rustfmt '("rustfmt" "--edition" "2024" "--quiet" "--emit" "stdout")))
@@ -214,7 +214,7 @@
 ;; To enable features, enable in .dir-locals.el: lsp-rust-features [ "all" ]
 
 ;; Nix
-(after! nix-ts-mode
+(with-eval-after-load nix-ts-mode
   (set-formatter! 'alejandra '("alejandra" "--quiet") :modes '(nix-mode))
   (let ((nix-rules (assoc 'nix nix-ts-mode-indent-rules)))
     (when nix-rules
@@ -223,7 +223,7 @@
                     (cdr nix-rules))))))
 
 ;; Go
-(after! go-ts-mode
+(with-eval-after-load go-ts-mode
   (setq! go-ts-mode-indent-offset 4))
 
 (defun my/consult-lsp-file-symbols ()
@@ -235,7 +235,7 @@
        projectile-project-search-path '(("~/src" . 2)))
 
 (use-package! lsp-mode)
-(after! lsp-mode
+(with-eval-after-load lsp-mode
   (setq! lsp-headerline-breadcrumb-enable t
          lsp-enable-snippet nil
          lsp-signature-doc-lines 8)
@@ -296,7 +296,7 @@
 (add-hook 'c-mode-common-hook #'google-set-c-style)
 
 ;; Beancount Indent
-(after! beancount
+(with-eval-after-load beancount
   (setq! beancount-transaction-indent 4))
 
 (remove-hook 'doom-first-buffer-hook #'smartparens-global-mode)
