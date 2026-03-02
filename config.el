@@ -6,18 +6,18 @@
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
-(setq user-full-name "Pasha Fistanto"
-      user-mail-address "pasha@fstn.top")
+(setopt user-full-name "Pasha Fistanto"
+        user-mail-address "pasha@fstn.top")
 
 (when (string-equal (system-name) "johndoe")
-  (setq user-mail-address "fistanto@ibr.cs.tu-bs.de"))
+  (setopt user-mail-address "fistanto@ibr.cs.tu-bs.de"))
 
 ;; Email
-(setq! +notmuch-sync-backend 'mbsync
-       mail-user-agent 'notmuch-user-agent)
-(with-eval-after-load notmuch
+(setopt +notmuch-sync-backend 'mbsync
+        mail-user-agent 'notmuch-user-agent)
+(with-eval-after-load 'notmuch
   (set-popup-rule! "^\*notmuch-hello" :ignore t)
-  (setq notmuch-fcc-dirs '((".*" . "ibr-tubs/Sent"))))
+  (setopt notmuch-fcc-dirs '((".*" . "ibr-tubs/Sent"))))
 
 ;; Some bug with notmuch address completion due to having notmuch-address-expand-name
 ;; in the message--old-style-completion-functions variable.
@@ -31,8 +31,8 @@
 ;;     (newline)
 ;;     (newline)))
 
-(setq! message-citation-line-function #'message-insert-formatted-citation-line
-       message-citation-line-format "[%Y-%m-%d] %f wrote:")
+(setopt message-citation-line-function #'message-insert-formatted-citation-line
+        message-citation-line-format "[%Y-%m-%d] %f wrote:")
 
 (advice-add 'message-completion-function :after #'pop-from-message-completion)
 
@@ -48,12 +48,12 @@
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
 ;;
-(setq doom-font (font-spec :family "SauceCodePro NFM" :size 16)
-      ;; (setq doom-font (font-spec :family "Iosevka NF" :size 16)
-      doom-variable-pitch-font (font-spec :family "SauceCodePro NFP" :size 16)
-      doom-symbol-font doom-font
-      doom-emoji-fallback-font-families nil
-      doom-symbol-fallback-font-families nil)
+(setopt doom-font (font-spec :family "SauceCodePro NFM" :size 16)
+        ;; (setq doom-font (font-spec :family "Iosevka NF" :size 16)
+        doom-variable-pitch-font (font-spec :family "SauceCodePro NFP" :size 16)
+        doom-symbol-font doom-font
+        doom-emoji-fallback-font-families nil
+        doom-symbol-fallback-font-families nil)
 
 ;;      doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
 ;;
@@ -65,15 +65,15 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-vibrant)
+(setopt doom-theme 'doom-vibrant)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type 'relative)
+(setopt display-line-numbers-type 'relative)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
+(setopt org-directory "~/org/")
 
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
@@ -109,24 +109,24 @@
 ;; they are implemented.
 
 (setenv "GPG_AGENT_INFO" nil)
-(setq auto-save-default nil)
+(setopt auto-save-default nil)
 
 ;; Shell
-(setq! shell-file-name "fish")
+(setopt shell-file-name "fish")
 
 ;; Which Key
-(with-eval-after-load which-key
-  (setq! which-key-idle-delay 0.2)
-  (setq! which-key-prefix-prefix "+"))
+(with-eval-after-load 'which-key
+  (setopt which-key-idle-delay 0.2)
+  (setopt which-key-prefix-prefix "+"))
 
-(setq! fill-column 80
-       message-fill-column 80)
+(setopt fill-column 80
+        message-fill-column 80)
 
 ;; Org
-(with-eval-after-load org-modern
-  (setq! org-modern-tag nil
-         org-modern-todo nil
-         org-modern-priority nil))
+(with-eval-after-load 'org-modern
+  (setopt org-modern-tag nil
+          org-modern-todo nil
+          org-modern-priority nil))
 ;; (set-face-attribute 'org-modern-label nil
 ;;                     :inherit 'default
 ;;                     :height 1.0
@@ -143,47 +143,47 @@
 ;;                     :width 'normal
 ;;                     :weight 'normal))
 
-(with-eval-after-load org
+(with-eval-after-load 'org
   (add-hook 'org-mode-hook #'auto-fill-mode)
 
   ;; Org crypt
-  (setq! org-crypt-key user-mail-address)
+  (setopt org-crypt-key user-mail-address)
 
   ;; Org Modern
-  (setq! org-modern-star 'replace)
-  (setq! org-modern-replace-stars "◉○")
+  (setopt org-modern-star 'replace)
+  (setopt org-modern-replace-stars "◉○")
 
   ;; Org appear
-  (setq! org-appear-autolinks t)
+  (setopt org-appear-autolinks t)
 
   ;; Org Agenda
-  (setq! org-log-done t
-         org-hide-emphasis-markers t
-         org-agenda-start-with-log-mode t
-         org-agenda-clockreport-parameter-plist '(:maxlevel 2 :block today :step day))
+  (setopt org-log-done t
+          org-hide-emphasis-markers t
+          org-agenda-start-with-log-mode t
+          org-agenda-clockreport-parameter-plist '(:maxlevel 2 :block today :step day))
 
-  (setq! org-agenda-tags-todo-honor-ignore-options t
-         org-agenda-todo-ignore-scheduled 'all
-         org-agenda-todo-ignore-deadlines 28)
+  (setopt org-agenda-tags-todo-honor-ignore-options t
+          org-agenda-todo-ignore-scheduled 'all
+          org-agenda-todo-ignore-deadlines 28)
 
-  (setq! org-capture-templates '(("t" "Personal todo" entry
-                                  (file +org-capture-todo-file)
-                                  "* TODO %?\n%i\n%a" :prepend t)))
+  (setopt org-capture-templates '(("t" "Personal todo" entry
+                                   (file +org-capture-todo-file)
+                                   "* TODO %?\n%i\n%a" :prepend t)))
 
   ;; Org Roam
-  (setq! org-roam-capture-templates
-         '(("d" "default" plain
-            "%?"
-            :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n") :unnarrowed t)
-           ("b" "book notes" plain
-            "* Source\n\nAuthor: %^{Author}\nTitle: ${title}\nYear: %^{Year}\n\n* Summary\n\n%?"
-            :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n")
-            :unnarrowed t))
-         )
-  (setq! citar-bibliography '("~/org/roam/references.bib")))
+  (setopt org-roam-capture-templates
+          '(("d" "default" plain
+             "%?"
+             :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n") :unnarrowed t)
+            ("b" "book notes" plain
+             "* Source\n\nAuthor: %^{Author}\nTitle: ${title}\nYear: %^{Year}\n\n* Summary\n\n%?"
+             :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n")
+             :unnarrowed t))
+          )
+  (setopt citar-bibliography '("~/org/roam/references.bib")))
 
-(with-eval-after-load org-download
-  (setq! org-download-screenshot-method "grim -g $(slurp -d) %s"))
+(with-eval-after-load 'org-download
+  (setopt org-download-screenshot-method "grim -g $(slurp -d) %s"))
 
 (use-package! websocket
   :after org-roam)
@@ -195,26 +195,26 @@
   ;;         if you don't care about startup time, use
   ;;  :hook (after-init . org-roam-ui-mode)
   :config
-  (setq org-roam-ui-sync-theme t
-        org-roam-ui-follow t
-        org-roam-ui-update-on-save t
-        org-roam-ui-open-on-start t))
+  (setopt org-roam-ui-sync-theme t
+          org-roam-ui-follow t
+          org-roam-ui-update-on-save t
+          org-roam-ui-open-on-start t))
 
 ;; C
 
-(with-eval-after-load c-ts-mode
-  (setq! c-ts-mode-indent-offset 4))
+(with-eval-after-load 'c-ts-mode
+  (setopt c-ts-mode-indent-offset 4))
 
 ;; Rust
-(with-eval-after-load rustic
-  (setq! rustic-indent-where-clause t)
+(with-eval-after-load 'rustic
+  (setopt rustic-indent-where-clause t)
   ;; Patch rustfmt config
   (set-formatter! 'rustfmt '("rustfmt" "--edition" "2024" "--quiet" "--emit" "stdout")))
 
 ;; To enable features, enable in .dir-locals.el: lsp-rust-features [ "all" ]
 
 ;; Nix
-(with-eval-after-load nix-ts-mode
+(with-eval-after-load 'nix-ts-mode
   (set-formatter! 'alejandra '("alejandra" "--quiet") :modes '(nix-mode))
   (let ((nix-rules (assoc 'nix nix-ts-mode-indent-rules)))
     (when nix-rules
@@ -223,22 +223,22 @@
                     (cdr nix-rules))))))
 
 ;; Go
-(with-eval-after-load go-ts-mode
-  (setq! go-ts-mode-indent-offset 4))
+(with-eval-after-load 'go-ts-mode
+  (setopt go-ts-mode-indent-offset 4))
 
 (defun my/consult-lsp-file-symbols ()
   "Consult LSP File Symbols with Category"
   (interactive)
   (consult-lsp-file-symbols t))
 
-(setq! projectile-auto-discover t
-       projectile-project-search-path '(("~/src" . 2)))
+(setopt projectile-auto-discover t
+        projectile-project-search-path '(("~/src" . 2)))
 
 (use-package! lsp-mode)
-(with-eval-after-load lsp-mode
-  (setq! lsp-headerline-breadcrumb-enable t
-         lsp-enable-snippet nil
-         lsp-signature-doc-lines 8)
+(with-eval-after-load 'lsp-mode
+  (setopt lsp-headerline-breadcrumb-enable t
+          lsp-enable-snippet nil
+          lsp-signature-doc-lines 8)
   (add-to-list 'lsp-language-id-configuration '(typst-ts-mode . "typst"))
   (lsp-register-client (make-lsp-client
                         :new-connection (lsp-stdio-connection "tinymist")
@@ -255,19 +255,19 @@
 
 (use-package! typst-ts-mode
   :config
-  (setq typst-ts-indent-offset 2))
+  (setopt typst-ts-indent-offset 2))
 
 ;; Hledger
-(setq! ledger-binary-path "hledger.sh"
-       ledger-default-date-format "%Y-%m-%d"
-       ledger-mode-should-check-version nil
-       ledger-report-auto-width nil
-       ledger-report-links-in-register nil
-       ledger-report-native-highlighting-arguments '("--color=always")
-       ledger-reports '(("bal" "%(binary) -f %(ledger-file) bal -t")
-                        ("reg" "%(binary) -f %(ledger-file) reg")
-                        ("payee" "%(binary) -f %(ledger-file) reg payee:%(payee)")
-                        ("account" "%(binary) -f %(ledger-file) reg %(account)")))
+(setopt ledger-binary-path "hledger.sh"
+        ledger-default-date-format "%Y-%m-%d"
+        ledger-mode-should-check-version nil
+        ledger-report-auto-width nil
+        ledger-report-links-in-register nil
+        ledger-report-native-highlighting-arguments '("--color=always")
+        ledger-reports '(("bal" "%(binary) -f %(ledger-file) bal -t")
+                         ("reg" "%(binary) -f %(ledger-file) reg")
+                         ("payee" "%(binary) -f %(ledger-file) reg payee:%(payee)")
+                         ("account" "%(binary) -f %(ledger-file) reg %(account)")))
 (add-to-list 'auto-mode-alist '("\\.journal\\'" . ledger-mode))
 
 ;; Just mode
@@ -278,25 +278,25 @@
 
 
 ;; Indent bars
-(setq! indent-bars-no-descend-lists t
-       indent-bars-treesit-support t
-       indent-bars-treesit-wrap '((rust arguments parameters))
-       indent-bars-treesit-scope '((rust trait_item impl_item
-                                    macro_definition macro_invocation
-                                    struct_item enum_item mod_item
-                                    const_item let_declaration
-                                    function_item for_expression
-                                    if_expression loop_expression
-                                    while_expression match_expression
-                                    match_arm call_expression
-                                    token_tree token_tree_pattern
-                                    token_repetition)))
+(setopt indent-bars-no-descend-lists t
+        indent-bars-treesit-support t
+        indent-bars-treesit-wrap '((rust arguments parameters))
+        indent-bars-treesit-scope '((rust trait_item impl_item
+                                     macro_definition macro_invocation
+                                     struct_item enum_item mod_item
+                                     const_item let_declaration
+                                     function_item for_expression
+                                     if_expression loop_expression
+                                     while_expression match_expression
+                                     match_arm call_expression
+                                     token_tree token_tree_pattern
+                                     token_repetition)))
 
 ;; CC Mode indentation
 (add-hook 'c-mode-common-hook #'google-set-c-style)
 
 ;; Beancount Indent
-(with-eval-after-load beancount
-  (setq! beancount-transaction-indent 4))
+(with-eval-after-load 'beancount
+  (setopt beancount-transaction-indent 4))
 
 (remove-hook 'doom-first-buffer-hook #'smartparens-global-mode)
