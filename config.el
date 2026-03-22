@@ -276,7 +276,6 @@
 ;; Keymaps
 (define-key input-decode-map "\C-i" [C-i])
 
-
 ;; Indent bars
 (setopt indent-bars-no-descend-lists t
         indent-bars-treesit-support t
