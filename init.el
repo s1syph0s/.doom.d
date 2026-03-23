@@ -96,9 +96,9 @@
        ;;ein               ; tame Jupyter notebooks with emacs
        (eval +overlay)     ; run code, run (also, repls)
        lookup              ; navigate your code and its documentation
-       lsp               ; M-x vscode
-       (magit +forge)             ; a git porcelain for Emacs
-       (majutsu)
+       lsp                 ; M-x vscode
+       (magit +forge)      ; a git porcelain for Emacs
+       majutsu             ; Custom doom Module
        ;;make              ; run make tasks from Emacs
        ;;pass              ; password manager for nerds
        pdf               ; pdf enhancements
