@@ -1,0 +1,3 @@
+[submodule "modules/tools/majutsu"]
+	path = modules/tools/majutsu
+	url = git@github.com:s1syph0s/doom-majutsu.git
