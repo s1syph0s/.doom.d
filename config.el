@@ -200,11 +200,6 @@
           org-roam-ui-update-on-save t
           org-roam-ui-open-on-start t))
 
-;; C
-
-(with-eval-after-load 'c-ts-mode
-  (setopt c-ts-mode-indent-offset 4))
-
 ;; Rust
 (with-eval-after-load 'rustic
   (setopt rustic-indent-where-clause t)
@@ -221,10 +216,6 @@
       (setf (cdr nix-rules)
             (append '(((parent-is "function_expression") parent-bol 0))
                     (cdr nix-rules))))))
-
-;; Go
-(with-eval-after-load 'go-ts-mode
-  (setopt go-ts-mode-indent-offset 4))
 
 (defun my/consult-lsp-file-symbols ()
   "Consult LSP File Symbols with Category"
