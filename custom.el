@@ -9,7 +9,8 @@
    '("/home/sisyph0s/src/co/lix/" "/home/fistanto/src/co/smalloc/"
      "/home/fistanto/src/co/lix/" "/home/fistanto/.doom.d/" "~/.emacs.d/"))
  '(safe-local-variable-values
-   '((eval setq-local default-directory
+   '((lsp-rust-analyzer-check-all-targets)
+     (eval setq-local default-directory
       (locate-dominating-file default-directory ".dir-locals.el")))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
