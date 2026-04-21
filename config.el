@@ -127,21 +127,6 @@
   (setopt org-modern-tag nil
           org-modern-todo nil
           org-modern-priority nil))
-;; (set-face-attribute 'org-modern-label nil
-;;                     :inherit 'default
-;;                     :height 1.0
-;;                     :width 'normal
-;;                     :weight 'normal)
-;; (set-face-attribute 'org-modern-todo nil
-;;                     :inherit 'default
-;;                     :height 1.0
-;;                     :width 'normal
-;;                     :weight 'normal)
-;; (set-face-attribute 'org-modern-priority nil
-;;                     :inherit 'default
-;;                     :height 1.0
-;;                     :width 'normal
-;;                     :weight 'normal))
 
 (with-eval-after-load 'org
   (add-hook 'org-mode-hook #'auto-fill-mode)
@@ -262,7 +247,7 @@
 (add-to-list 'auto-mode-alist '("\\.journal\\'" . ledger-mode))
 
 ;; Just mode
-(add-hook 'just-mode-hook (lambda () (dtrt-indent-mode 0)))
+;; (add-hook 'just-mode-hook (lambda () (dtrt-indent-mode 0)))
 
 ;; Keymaps
 (define-key input-decode-map "\C-i" [C-i])
@@ -281,9 +266,6 @@
                                      match_arm call_expression
                                      token_tree token_tree_pattern
                                      token_repetition)))
-
-;; CC Mode indentation
-(add-hook 'c-mode-common-hook #'google-set-c-style)
 
 ;; Beancount Indent
 (with-eval-after-load 'beancount
