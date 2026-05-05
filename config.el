@@ -208,7 +208,9 @@
   (consult-lsp-file-symbols t))
 
 (setopt projectile-auto-discover t
-        projectile-project-search-path '(("~/src" . 2)))
+        projectile-project-search-path '(("~/src" . 2)
+                                         ("~/src/work/" . 2)
+                                         ("~/tmp/" . 1)))
 
 (use-package! lsp-mode)
 (with-eval-after-load 'lsp-mode
