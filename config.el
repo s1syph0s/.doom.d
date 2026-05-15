@@ -195,7 +195,7 @@
 
 ;; Nix
 (with-eval-after-load 'nix-ts-mode
-  (set-formatter! 'alejandra '("alejandra" "--quiet") :modes '(nix-mode))
+  (set-formatter! 'alejandra '("alejandra" "--quiet") :modes '(nix-mode nix-ts-mode))
   (let ((nix-rules (assoc 'nix nix-ts-mode-indent-rules)))
     (when nix-rules
       (setf (cdr nix-rules)
