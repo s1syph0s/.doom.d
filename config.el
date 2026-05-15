@@ -187,9 +187,10 @@
 
 ;; Rust
 (with-eval-after-load 'rustic
-  (setopt rustic-indent-where-clause t)
-  ;; Patch rustfmt config
-  (set-formatter! 'rustfmt '("rustfmt" "--edition" "2024" "--quiet" "--emit" "stdout")))
+  (setopt rustic-indent-where-clause t))
+
+;; Patch rustfmt config
+;;(set-formatter! 'rustfmt '("rustfmt" "--edition" "2024" "--quiet" "--emit" "stdout")))
 
 ;; To enable features, enable in .dir-locals.el: lsp-rust-features [ "all" ]
 
