@@ -65,7 +65,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setopt doom-theme 'doom-vibrant)
+(setopt doom-theme 'doom-one)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -187,10 +187,10 @@
 
 ;; Rust
 (with-eval-after-load 'rustic
-  (setopt rustic-indent-where-clause t))
+  (setopt rustic-indent-where-clause t)
 
-;; Patch rustfmt config
-;;(set-formatter! 'rustfmt '("rustfmt" "--edition" "2024" "--quiet" "--emit" "stdout")))
+  ;; Patch rustfmt config
+  (set-formatter! 'rustfmt '("rustfmt" "--edition" "2024" "--quiet" "--emit" "stdout")))
 
 ;; To enable features, enable in .dir-locals.el: lsp-rust-features [ "all" ]
 
