@@ -190,7 +190,7 @@
 
        :config
        ;;literate
-       (default +bindings +gnupg))
+       (default +bindings +gnupg +smartparens))
 
 (after! doom-cli-env
   (add-to-list 'doom-env-allow "^SSH_"))
