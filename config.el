@@ -165,7 +165,7 @@
              :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n")
              :unnarrowed t))
           )
-  (setopt citar-bibliography '("~/org/roam/references.bib")))
+  (setopt citar-bibliography '("~/org/references.bib" "~/org/parperos.bib")))
 
 (with-eval-after-load 'org-download
   (setopt org-download-screenshot-method "grim -g $(slurp -d) %s"))
