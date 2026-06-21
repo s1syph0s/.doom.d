@@ -10,7 +10,8 @@
      "/home/fistanto/src/co/smalloc/" "/home/fistanto/src/co/lix/"
      "/home/fistanto/.doom.d/" "~/.emacs.d/"))
  '(safe-local-variable-values
-   '((lsp-rust-analyzer-check-all-targets)
+   '((lsp-beancount-journal-file . "ledger.beancount")
+     (lsp-rust-analyzer-check-all-targets)
      (eval setq-local default-directory
       (locate-dominating-file default-directory ".dir-locals.el")))))
 (custom-set-faces
