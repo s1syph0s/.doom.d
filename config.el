@@ -276,5 +276,3 @@
 ;; Beancount Indent
 (with-eval-after-load 'beancount
   (setopt beancount-transaction-indent 4))
-
-;; (remove-hook 'doom-first-buffer-hook #'smartparens-global-mode)
