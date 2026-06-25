@@ -21,7 +21,7 @@
 
 ;; Some bug with notmuch address completion due to having notmuch-address-expand-name
 ;; in the message--old-style-completion-functions variable.
-(defun pop-from-message-completion()
+(defun +private/pop-from-message-completion()
   (pop message--old-style-completion-functions))
 
 ;; (defun my-message-insert-citation-line ()
@@ -34,7 +34,7 @@
 (setopt message-citation-line-function #'message-insert-formatted-citation-line
         message-citation-line-format "[%Y-%m-%d] %f wrote:")
 
-(advice-add 'message-completion-function :after #'pop-from-message-completion)
+(advice-add 'message-completion-function :after #'+private/pop-from-message-completion)
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
