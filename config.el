@@ -114,6 +114,14 @@
 ;; Shell
 (setopt shell-file-name "fish")
 
+;; LLM
+(with-eval-after-load 'gptel
+  (let* ((gemini-api (format "%s" (doom-file-read "~/.config/sops-nix/secrets/llm/gemini" :by 'read)))
+         (gemini-backend (gptel-make-gemini "Gemini" :key gemini-api :stream t)))
+    (setq
+     gptel-model 'gemini-3.5-flash
+     gptel-backend gemini-backend)))
+
 ;; Which Key
 (with-eval-after-load 'which-key
   (setopt which-key-idle-delay 0.2)
