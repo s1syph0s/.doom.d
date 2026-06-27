@@ -114,9 +114,22 @@
 ;; Shell
 (setopt shell-file-name "fish")
 
+(defun +private/read-file-to-string (file)
+  (format "%s" (doom-file-read file :by 'read)))
+
+;; IRC
+(with-eval-after-load 'circe
+  (set-irc-server! "irc.libera.chat"
+    `(:tls t
+      :port 6697
+      :nick "sisyph0s"
+      :sasl-username "sisyph0s"
+      :sasl-password ,(+private/read-file-to-string "~/.config/sops-nix/secrets/irc/libera")
+      :channels ("#emacs"))))
+
 ;; LLM
 (with-eval-after-load 'gptel
-  (let* ((gemini-api (format "%s" (doom-file-read "~/.config/sops-nix/secrets/llm/gemini" :by 'read)))
+  (let* ((gemini-api (+private/read-file-to-string "~/.config/sops-nix/secrets/llm/gemini"))
          (gemini-backend (gptel-make-gemini "Gemini" :key gemini-api :stream t)))
     (setq
      gptel-model 'gemini-3.5-flash
