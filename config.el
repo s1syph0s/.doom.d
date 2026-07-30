@@ -113,6 +113,7 @@
 
 ;; Shell
 (setopt shell-file-name "fish")
+(setopt ghostel-shell "fish")
 
 (defun +private/read-file-to-string (file)
   (format "%s" (doom-file-read file :by 'read)))
