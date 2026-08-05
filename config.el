@@ -254,7 +254,7 @@
 
   (add-hook 'typst-ts-mode-local-vars-hook #'lsp! 'append)
   (map! :leader
-        (:prefix ("c" . "code")
+        (:prefix "c"
          "j" nil
          "J" nil
          :desc "Jump to symbol in current file" "j" #'my/consult-lsp-file-symbols
