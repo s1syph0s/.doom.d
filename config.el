@@ -228,6 +228,9 @@
             (append '(((parent-is "function_expression") parent-bol 0))
                     (cdr nix-rules))))))
 
+;; C/C++
+(setopt c-ts-mode-indent-offset 4)
+
 (defun my/consult-lsp-file-symbols ()
   "Consult LSP File Symbols with Category"
   (interactive)
