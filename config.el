@@ -112,6 +112,8 @@
 (setenv "GPG_AGENT_INFO" nil)
 (setopt auto-save-default nil)
 
+;; (add-hook 'visual-line-mode-hook #'visual-fill-column-for-vline)
+
 ;; Shell
 (setopt shell-file-name "fish")
 (setopt ghostel-shell "fish")
@@ -152,7 +154,7 @@
           org-modern-priority nil))
 
 (with-eval-after-load 'org
-  (add-hook 'org-mode-hook #'auto-fill-mode)
+  (add-hook 'org-mode-hook #'visual-line-mode)
 
   ;; Org crypt
   (setopt org-crypt-key user-mail-address)
