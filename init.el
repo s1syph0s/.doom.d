@@ -14,6 +14,9 @@
 ;;      Alternatively, press 'gd' (or 'C-c c d') on a module to browse its
 ;;      directory (for easy access to its source code).
 
+;; FIXME: Remove this when upstream is fixed
+;; https://github.com/doomemacs/core/issues/8880
+(autoload 'define-compilation-mode "compile" nil nil 'macro)
 ;; Set evil stuff
 (setopt evil-respect-visual-line-mode t)
 

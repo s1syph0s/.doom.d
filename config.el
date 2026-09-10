@@ -173,6 +173,7 @@
           org-agenda-clockreport-parameter-plist '(:maxlevel 2 :block today :step day))
 
   (setopt org-agenda-tags-todo-honor-ignore-options t
+          org-agenda-span 7
           org-agenda-todo-ignore-scheduled 'all
           org-agenda-todo-ignore-deadlines 28)
 
