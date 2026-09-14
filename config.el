@@ -167,7 +167,7 @@
   (setopt org-appear-autolinks t)
 
   ;; Org Agenda
-  (setopt org-log-done t
+  (setopt org-log-done 'time
           org-hide-emphasis-markers t
           org-agenda-start-with-log-mode t
           org-agenda-clockreport-parameter-plist '(:maxlevel 2 :block today :step day))
