@@ -170,7 +170,8 @@
   (setopt org-log-done 'time
           org-hide-emphasis-markers t
           org-agenda-start-with-log-mode t
-          org-agenda-clockreport-parameter-plist '(:maxlevel 2 :block today :step day))
+          org-agenda-clockreport-parameter-plist '(:maxlevel 2 :block today :step day)
+          org-agenda-files '("~/org" "~/org/roam/private.org" "~/org/roam/doctoral.org"))
 
   (setopt org-agenda-tags-todo-honor-ignore-options t
           org-agenda-span 7
@@ -193,7 +194,16 @@
              "* Source\n\nAuthor: %^{Author}\nTitle: ${title}\nYear: %^{Year}\n\n* Summary\n\n%?"
              :target (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n")
              :unnarrowed t))
-          )
+
+          org-roam-dailies-capture-templates
+          `(("d" "default" plain ""
+             :target (file+head "%<%Y-%m-%d>.org"
+                                ,(with-temp-buffer
+                                   (insert-file-contents
+                                    (expand-file-name "templates/roam-daily.org" doom-user-dir))
+                                   (buffer-string)))
+             :unnarrowed t)))
+
   (setopt citar-bibliography '("~/org/references.bib" "~/org/parperos.bib")))
 
 (with-eval-after-load 'org-download

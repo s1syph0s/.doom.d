@@ -6,7 +6,8 @@
  '(custom-safe-themes
    '("0325a6b5eea7e5febae709dab35ec8648908af12cf2d2b569bedc8da0a3a81c1" default))
  '(safe-local-variable-directories
-   '("/home/fistanto/src/co/mallocng/" "/home/sisyph0s/src/co/lix/"
+   '("/home/sisyph0s/src/work/m3/work/" "/home/sisyph0s/src/work/m3/main/"
+     "/home/fistanto/src/co/mallocng/" "/home/sisyph0s/src/co/lix/"
      "/home/fistanto/src/co/smalloc/" "/home/fistanto/src/co/lix/"
      "/home/fistanto/.doom.d/" "~/.emacs.d/"))
  '(safe-local-variable-values
