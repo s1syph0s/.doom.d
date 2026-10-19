@@ -59,5 +59,9 @@
 (package! catppuccin-theme)
 ;; (package! visual-fill-column)
 
+(package! shell-maker)
+(package! acp)
+(package! agent-shell)
+
 ;; Local hacking
 ;;(package! nix-ts-mode :recipe (:local-repo "~/src/co/nix-ts-mode"))

@@ -139,6 +139,54 @@
      gptel-model 'gemini-3.5-flash
      gptel-backend gemini-backend)))
 
+;; LLM - Agent shell
+(require 'acp)
+(require 'agent-shell)
+
+(use-package! agent-shell
+  :commands (agent-shell-anthropic-start-claude-code)
+  :config
+  ;; Fail loudly if the variable ever disappears: otherwise agent-shell would
+  ;; silently launch the adapter on the host instead of in the VM.
+  (unless (boundp 'agent-shell-anthropic-claude-acp-command)
+    (error "agent-shell-anthropic-claude-acp-command is gone: the agent would run on the host"))
+
+  (setq
+   ;; Run the agent inside the VM (Home Manager wrapper; refuses outside ~/agent).
+   agent-shell-anthropic-claude-acp-command '("agent-vm-acp")
+
+   ;; The wrapper needs HOME, PATH and possibly SSH_AUTH_SOCK, and the default
+   ;; environment for the agent process is minimal.
+   agent-shell-anthropic-claude-environment
+   (agent-shell-make-environment-variables :inherit-env t)
+
+   ;; Don't let the agent read/write host files through Emacs over ACP. It edits
+   ;; the project itself, inside the VM.
+   agent-shell-text-file-capabilities nil
+
+   agent-shell-anthropic-authentication
+   (agent-shell-anthropic-make-authentication :login t))
+
+  ;; Evil state-specific RET behavior: insert mode = newline, normal mode = send
+  (evil-define-key 'insert agent-shell-mode-map (kbd "RET") #'newline)
+  (evil-define-key 'normal agent-shell-mode-map (kbd "RET") #'comint-send-input)
+  ;; Configure *agent-shell-diff* buffers to start in Emacs state
+  (add-hook 'diff-mode-hook
+            (lambda ()
+              (when (string-match-p "\\*agent-shell-diff\\*" (buffer-name))
+                (evil-emacs-state)))))
+
+(map! :leader
+      (:prefix "o"
+       :desc "Clanker (VM)" "c" #'agent-shell-anthropic-start-claude-code))
+
+;; The agent can write anything inside ~/agent, including .git/config. Stop Emacs
+;; (vc-git, diff-hl) from running git on the host inside those repos.
+(with-eval-after-load 'vc
+  (setq vc-ignore-dir-regexp
+        (format "%s\\|%s" vc-ignore-dir-regexp
+                (regexp-quote (expand-file-name "~/agent/")))))
+
 ;; Which Key
 (with-eval-after-load 'which-key
   (setopt which-key-idle-delay 0.2)
