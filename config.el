@@ -155,6 +155,8 @@
    ;; Run the agent inside the VM (Home Manager wrapper; refuses outside ~/agent).
    agent-shell-anthropic-claude-acp-command '("agent-vm-acp")
 
+   agent-shell-anthropic-default-model-id "sonnet"
+
    ;; The wrapper needs HOME, PATH and possibly SSH_AUTH_SOCK, and the default
    ;; environment for the agent process is minimal.
    agent-shell-anthropic-claude-environment
