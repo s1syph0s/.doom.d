@@ -65,3 +65,5 @@
 
 ;; Local hacking
 ;;(package! nix-ts-mode :recipe (:local-repo "~/src/co/nix-ts-mode"))
+(package! majutsu
+  :recipe (:host github :repo "s1syph0s/majutsu"))

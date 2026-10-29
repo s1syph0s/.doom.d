@@ -203,6 +203,7 @@
           org-modern-todo nil
           org-modern-priority nil))
 
+
 (with-eval-after-load 'org
   (add-hook 'org-mode-hook #'visual-line-mode)
 
@@ -217,11 +218,17 @@
   (setopt org-appear-autolinks t)
 
   ;; Org Agenda
+  (setopt org-todo-keywords '((sequence "TODO(t)" "REPEAT(s)" "WAIT(w)" "HOLD(h)" "IDEA(i)"
+                               "|" "DONE(d)")
+                              (sequence "[ ](T)" "[-](S)" "[?](W)" "|" "[X](D)")
+                              (sequence "|" "OKAY(o)" "YES(y)" "NO(n)")))
+
   (setopt org-log-done 'time
           org-hide-emphasis-markers t
           org-agenda-start-with-log-mode t
           org-agenda-clockreport-parameter-plist '(:maxlevel 2 :block today :step day)
           org-agenda-files '("~/org" "~/org/roam/private.org" "~/org/roam/doctoral.org"))
+
 
   (setopt org-agenda-tags-todo-honor-ignore-options t
           org-agenda-span 7
