@@ -68,6 +68,10 @@
 (setopt doom-theme 'catppuccin)
 (setopt catppuccin-flavor 'macchiato)
 
+;; Custom face
+(custom-theme-set-faces! 'catppuccin
+  `(org-roam-dailies-calendar-note :foreground ,(catppuccin-color 'green)))
+
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setopt display-line-numbers-type 'relative)
