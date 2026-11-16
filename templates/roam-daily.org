@@ -1,5 +1,3 @@
 #+title: %<%Y-%m-%d>
 
-* How do you feel today?
-
 * Goals for today
