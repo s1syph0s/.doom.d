@@ -70,7 +70,8 @@
 
 ;; Custom face
 (custom-theme-set-faces! 'catppuccin
-  `(org-roam-dailies-calendar-note :foreground ,(catppuccin-color 'green)))
+  `(org-roam-dailies-calendar-note :foreground ,(catppuccin-color 'green))
+  `(majutsu-bookmark-local :inherit font-lock-string-face))
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
